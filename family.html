@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bootstrap</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="animate.css">
+    <link rel="stylesheet" href="style.css">
+
+  </head>
+  <body>
+    <header class="startup text-center text-white d-flex">
+      <div class="container my-auto">
+        <div class="row">
+          <div class = "col-lg-12 my-auto">
+            <h1 class="text-uppercase faded animated slideInDown">
+              <strong>heroes versus villains</strong>
+            </h1>
+            <hr>
+          </div>
+        </div>
+        <div class = "row">
+          <div class="col-lg-6 my-auto team heroes">
+            <input id = "userinput" type='text' placeholder = "Enter Heroes">
+            <button id="enter">Create Your Team of Heroes</button>
+            <h2>Team of Heroes</h2>
+            <ul>
+              <li>Spider-Man<button class="delete">Delete</button></li>
+              <li>Iron Man<button class="delete">Delete</button></li>
+            </ul>
+          </div>
+          <div class="col-lg-6 my-auto team">
+            <input id = "userinput" type='text' placeholder = "Enter Villains">
+            <button id="enter">Create Your Team of Villains</button>
+            <h2>Team of Villains</h2>
+            <ul>
+              <li>Green Goblin<button class="delete">Delete</button></li>
+              <li>Dr. Doom<button class="delete">Delete</button></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+    <script type="text/javascript" src="script.js">
+    </script>
+
+  </body>
+
+</html>

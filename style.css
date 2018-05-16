@@ -32,6 +32,15 @@ h1 {
   border-radius: 10px 10px;
 }
 
+.team {
+  background-color: rgba(255,255,255,0.4);
+  font-weight: bold;
+}
+
+.heroes {
+  border-right: 1px solid black;
+}
+
 .btn-primary {
   border-radius: 20px;
   border: #641B1B;
@@ -42,12 +51,36 @@ h1 {
 .btn-primary:hover {
   transform: scale(1.5);
   background-color: #641B1B;
+}
 
+.btn-secondary {
+  border-radius: 10px;
+  border: #000000;
+  background-color: #000000;
+  transition: all 1s;
+}
+
+a {
+  color: white;
+}
+
+.btn-secondary:hover {
+  transform: scale(1.5);
+  background-color: #000000;
+  color: "white";
 }
 
 h2,
 li {
   color: black;
+}
+
+li {
+  list-style-type: none;
+}
+
+button {
+  margin: 1em;
 }
 
 .done {

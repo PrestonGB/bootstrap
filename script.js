@@ -61,7 +61,6 @@ function signIn(first, last) {
 
 signIn(firstNamePrompt, lastNamePrompt);
 
-
 var button = document.getElementById("enter");
 var input = document.getElementById("userinput");
 var ul = document.querySelector("ul");
