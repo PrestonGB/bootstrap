@@ -34,7 +34,6 @@ var database = [
 
 ];
 
-
 var firstNamePrompt = prompt("What is your first name (please capitalize first letter)?");
 var lastNamePrompt = prompt("What is your last name (please capitalize first letter)?");
 
@@ -61,34 +60,67 @@ function signIn(first, last) {
 
 signIn(firstNamePrompt, lastNamePrompt);
 
-var button = document.getElementById("enter");
-var input = document.getElementById("userinput");
-var ul = document.querySelector("ul");
+var buttonhero = document.getElementById("enterhero");
+var inputhero = document.getElementById("userinputhero");
+var buttonvillain = document.getElementById("entervillain");
+var inputvillain = document.getElementById("userinputvillain");
+var ol = document.querySelector("ol");
+var olvillain = document.querySelector("ol.villain");
+var body = document.querySelector("body");
+var team = document.querySelectorAll(".team");
 
-function inputLength() {
-  return input.value.length;
+function inputLengthHero() {
+  return inputhero.value.length;
 }
 
-function createListElement() {
+function inputLengthVillain() {
+  return inputvillain.value.length;
+}
+
+
+function createListElementHero() {
   var li = document.createElement("li");
   var button = document.createElement("button");
-	li.appendChild(document.createTextNode(input.value));
-	ul.appendChild(li);
-	input.value = "";
+	li.appendChild(document.createTextNode(inputhero.value));
+	ol.appendChild(li);
+	inputhero.value = "";
 	button.appendChild(document.createTextNode("Delete"));
 	button.classList="delete";
 	li.appendChild(button);
 }
 
-function addListAfterClick () {
-  if (inputLength() > 0) {
-    createListElement();
+function createListElementVillain() {
+  var li = document.createElement("li");
+  var button = document.createElement("button");
+	li.appendChild(document.createTextNode(inputvillain.value));
+	olvillain.appendChild(li);
+	inputvillain.value = "";
+	button.appendChild(document.createTextNode("Delete"));
+	button.classList="delete";
+	li.appendChild(button);
+}
+
+function addListAfterClickHero () {
+  if (inputLengthHero() > 0) {
+    createListElementHero();
   }
 }
 
-function addListAfterEnter (event) {
-  if (inputLength() > 0 && event.keyCode === 13) {
-    createListElement();
+function addListAfterClickVillain () {
+  if (inputLengthVillain() > 0) {
+    createListElementVillain();
+  }
+}
+
+function addListAfterEnterHero (event) {
+  if (inputLengthHero() > 0 && event.keyCode === 13) {
+    createListElementHero();
+  }
+}
+
+function addListAfterEnterVillain (event) {
+  if (inputLengthVillain() > 0 && event.keyCode === 13) {
+    createListElementVillain();
   }
 }
 
@@ -99,8 +131,12 @@ function deleteListItem(event) {
 }
 
 
-button.addEventListener("click", addListAfterClick);
+buttonhero.addEventListener("click", addListAfterClickHero);
 
-input.addEventListener("keypress", addListAfterEnter);
+inputhero.addEventListener("keypress", addListAfterEnterHero);
 
-ul.addEventListener("click", deleteListItem);
+buttonvillain.addEventListener("click", addListAfterClickVillain);
+
+inputvillain.addEventListener("keypress", addListAfterEnterVillain);
+
+body.addEventListener("click", deleteListItem);
