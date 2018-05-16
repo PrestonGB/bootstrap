@@ -44,3 +44,12 @@ h1 {
   background-color: #641B1B;
 
 }
+
+h2,
+li {
+  color: black;
+}
+
+.done {
+  text-decoration: line-through;
+}
