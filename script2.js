@@ -1,4 +1,4 @@
-var database = [
+/*var database = [
   {
     username: "Preston",
     password: "preston",

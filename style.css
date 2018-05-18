@@ -32,8 +32,8 @@ h1 {
   border-radius: 10px 10px;
 }
 
-.team {
-  background-color: rgba(255,255,255,0.5);
+.team, .family {
+  background-color: rgba(200,200,200,0.5);
   font-weight: bold;
 }
 
