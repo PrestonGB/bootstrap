@@ -104,26 +104,43 @@ let ol = document.querySelector("ol");
 let olvillain = document.querySelector("ol.villain");
 let body = document.querySelector("body");
 let team = document.querySelectorAll(".team");
-let newHero = '';
 
 let inputLengthHero = () => inputhero.value.length;
 
 let inputLengthVillain = () => inputvillain.value.length;
 
-let heroTeamLength = () => (ol.childElementCount < 7) ? true : false;
+let heroTeamLength = () => (ol.childElementCount < 7) ? true : alert("Team can have at most 7 members");
 
-let villainTeamLength = () => (olvillain.childElementCount < 7) ? true : false;
+let villainTeamLength = () => (olvillain.childElementCount < 7) ? true : alert("Team can have at most 7 members");
 
 let randomHeroIndex = () => Math.floor(Math.random()*stockHeroes.length);
 
 let randomHeroName = () => stockHeroes[randomHeroIndex()];
 
-let randomHeroCheck = () => {
-  for (let i = 0; i < stockHeroes.length; i++) {
-    if(stockHeroes[0] === randomHeroName()) {
-      return true
+let createRandomHero = () => {
+  let randomHeroNameToCheck = randomHeroName();
+  let randomHeroCheck = () =>  {
+    let duplicates = 0;
+    for(var i = 0; i < ol.childElementCount; i++) {
+      if(ol.children[i].childNodes[0].nodeValue === randomHeroNameToCheck) {duplicates++;}
+    };
+    if (duplicates===0) {
+      return true;
     } else {
       return false;
+    }
+  }
+  if (heroTeamLength()) {
+    if(randomHeroCheck()) {
+      let li = document.createElement("li");
+      let button = document.createElement("button");
+      li.appendChild(document.createTextNode(randomHeroNameToCheck));
+      ol.appendChild(li);
+      button.appendChild(document.createTextNode("Remove"));
+      button.classList="delete";
+      li.appendChild(button);
+    } else {
+      createRandomHero();
     }
   }
 }
@@ -132,45 +149,31 @@ let randomVillainIndex = () => Math.floor(Math.random()*stockVillains.length);
 
 let randomVillainName = () => stockVillains[randomVillainIndex()];
 
-let createRandomHero = () => {
-  if (heroTeamLength()) {
-    let randomHero =
-    newHero=randomHero;
-  } else {
-    alert("Team can only have at most 7 members");
-  }
-}
-
-let addRandomHero = () => {
-  console.log(randomHero);}
-  /*
-  for (let heroIndex = 0; heroIndex < ol.childElementCount; heroIndex++) {
-    if(randomHero === ol.children[heroIndex].childeNodes[0].nodeValue) {
-      createRandomHero();
+let createRandomVillain = () => {
+  let randomVillainNameToCheck = randomVillainName();
+  let randomVillainCheck = () =>  {
+    let duplicates = 0;
+    for(var i = 0; i < olvillain.childElementCount; i++) {
+      if(olvillain.children[i].childNodes[0].nodeValue === randomVillainNameToCheck) {duplicates++;}
+    };
+    if (duplicates===0) {
+      return true;
     } else {
-        let li = document.createElement("li");
-        let button = document.createElement("button");
-        li.appendChild(document.createTextNode(randomHero));
-        ol.appendChild(li);
-        button.appendChild(document.createTextNode("Delete"));
-        button.classList="delete";
-        li.appendChild(button);
+      return false;
     }
   }
-}*/
-
-let createRandomVillain = () => {
   if (villainTeamLength()) {
-    let randomVillain = stockVillains[Math.floor(Math.random()*((stockVillains.length)))];
-    let li = document.createElement("li");
-    let button = document.createElement("button");
-    li.appendChild(document.createTextNode(randomVillain));
-    olvillain.appendChild(li);
-    button.appendChild(document.createTextNode("Delete"));
-    button.classList="delete";
-    li.appendChild(button);
-  } else {
-    alert("Team can only have at most 7 members");
+    if(randomVillainCheck()) {
+      let li = document.createElement("li");
+      let button = document.createElement("button");
+      li.appendChild(document.createTextNode(randomVillainNameToCheck));
+      olvillain.appendChild(li);
+      button.appendChild(document.createTextNode("Remove"));
+      button.classList="delete";
+      li.appendChild(button);
+    } else {
+      createRandomVillain();
+    }
   }
 }
 
@@ -180,7 +183,7 @@ let createListElementHero = () => {
 	li.appendChild(document.createTextNode(inputhero.value));
 	ol.appendChild(li);
 	inputhero.value = "";
-	button.appendChild(document.createTextNode("Delete"));
+	button.appendChild(document.createTextNode("Remove"));
 	button.classList="delete";
 	li.appendChild(button);
 }
@@ -191,7 +194,7 @@ let createListElementVillain = ()=> {
 	li.appendChild(document.createTextNode(inputvillain.value));
 	olvillain.appendChild(li);
 	inputvillain.value = "";
-	button.appendChild(document.createTextNode("Delete"));
+	button.appendChild(document.createTextNode("Remove"));
 	button.classList="delete";
 	li.appendChild(button);
 }
@@ -200,8 +203,6 @@ let addListAfterClickHero =()=> {
   if (inputLengthHero() > 0) {
     if(heroTeamLength()) {
       createListElementHero();
-    } else {
-      alert("Team can only have at most 7 members");
     }
   }
 }
@@ -210,8 +211,6 @@ let addListAfterClickVillain = ()=> {
   if (inputLengthVillain() > 0) {
     if(villainTeamLength()) {
       createListElementVillain();
-    } else {
-      alert("Team can only have at most 7 members");
     }
   }
 }
@@ -221,8 +220,6 @@ let addListAfterEnterHero = (event) => {
     if (inputLengthHero() > 0) {
       if(heroTeamLength()) {
         createListElementHero();
-      } else {
-        alert("Team can only have at most 7 members");
       }
     }
   }
@@ -233,8 +230,6 @@ let addListAfterEnterVillain = (event) => {
     if (inputLengthVillain() > 0) {
       if(villainTeamLength()) {
         createListElementVillain();
-      } else {
-        alert("Team can only have at most 7 members");
       }
     }
   }
@@ -246,7 +241,7 @@ let deleteListItem = (event) => {
 	}
 }
 
-randomherobutton.addEventListener("click", addRandomHero)
+randomherobutton.addEventListener("click", createRandomHero)
 
 randomvillainbutton.addEventListener("click", createRandomVillain)
 
