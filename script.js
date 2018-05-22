@@ -104,14 +104,16 @@ let ol = document.querySelector("ol");
 let olvillain = document.querySelector("ol.villain");
 let body = document.querySelector("body");
 let team = document.querySelectorAll(".team");
+let heroTeamLengthMax = 6;
+let villainTeamLengthMax = 6;
 
 let inputLengthHero = () => inputhero.value.length;
 
 let inputLengthVillain = () => inputvillain.value.length;
 
-let heroTeamLength = () => (ol.childElementCount < 7) ? true : alert("Team can have at most 7 members");
+let heroTeamLength = () => (ol.childElementCount < heroTeamLengthMax) ? true : alert(`Team can have at most ${heroTeamLengthMax} members`);
 
-let villainTeamLength = () => (olvillain.childElementCount < 7) ? true : alert("Team can have at most 7 members");
+let villainTeamLength = () => (olvillain.childElementCount < villainTeamLengthMax) ? true : alert(`Team can have at most ${villainTeamLengthMax} members`);
 
 let randomHeroIndex = () => Math.floor(Math.random()*stockHeroes.length);
 
