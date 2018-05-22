@@ -49,16 +49,14 @@ let villaincount = document.getElementById("villainsRemaining");
 
 let heroesLeft = () => herocount.innerText=`Spots Remaining on Team: ${heroTeamLengthMax - ol.childElementCount}`;
 
-let increaseTeamCount = (event) => {
-  herocount.innerText=`Spots Remaining on Team: ${heroTeamLengthMax - ol.childElementCount}`;
-  villaincount.innerText=`Spots Remaining on Team: ${villainTeamLengthMax - olvillain.childElementCount}`;
-}
-
 let villainsLeft = () => villaincount.innerText=`Spots Remaining on Team: ${villainTeamLengthMax - olvillain.childElementCount}`;
 
-heroesLeft();
+let adjustTeamCount = () => {
+  heroesLeft();
+  villainsLeft();
+}
 
-villainsLeft();
+adjustTeamCount();
 
 let inputLengthHero = () => inputhero.value.length;
 
@@ -198,11 +196,7 @@ let deleteListItem = (event) => {
 
 randomherobutton.addEventListener("click", createRandomHero)
 
-randomherobutton.addEventListener("click", heroesLeft)
-
 randomvillainbutton.addEventListener("click", createRandomVillain)
-
-randomvillainbutton.addEventListener("click", villainsLeft)
 
 buttonhero.addEventListener("click", addListAfterClickHero);
 
@@ -214,7 +208,7 @@ inputvillain.addEventListener("keypress", addListAfterEnterVillain);
 
 body.addEventListener("click", deleteListItem);
 
-body.addEventListener("click", increaseTeamCount);
+body.addEventListener("click", adjustTeamCount);
 
 /*something for later
 function heroPhrase(hero) {

@@ -48,7 +48,8 @@ p {
   border-radius: 10px 10px;
 }
 
-.team, .family {
+.team,
+.family {
   background-color: rgba(200,200,200,0.5);
   font-weight: bold;
 }
