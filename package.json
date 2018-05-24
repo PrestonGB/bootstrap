@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/PrestonGB/bootstrap/issues"
   },
-  "homepage": "https://github.com/PrestonGB/bootstrap#readme"
+  "homepage": "https://github.com/PrestonGB/bootstrap#readme",
+  "dependencies": {
+    "lodash": "^4.17.10"
+  }
 }
